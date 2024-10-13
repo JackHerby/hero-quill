@@ -5,9 +5,8 @@ export default withNuxt(
   {
     files: ["**/*.ts", "**/*.js", "**/*.vue"],
     rules: {
-      // allows for one-line early returns
       "@stylistic/max-statements-per-line": ["error", { max: 2 }],
-      "consistent-return": "off",
+      "@stylistic/max-len": ["error", { code: 120 }],
     },
   },
 );
