@@ -14,6 +14,7 @@
   "dependencies": {
     "@nuxt/ui": "^2.18.7",
     "@prisma/nuxt": "^0.0.35",
+    "@sidebase/nuxt-auth": "^0.9.4",
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-router": "latest"
