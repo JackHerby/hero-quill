@@ -13,4 +13,12 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  auth: {
+    provider: {
+      type: 'authjs',
+      trustHost: false,
+      defaultProvider: 'github',
+      addDefaultCallbackUrl: true,
+    },
+  },
 })
