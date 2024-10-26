@@ -21,4 +21,7 @@ export default defineNuxtConfig({
       addDefaultCallbackUrl: true,
     },
   },
+  prisma: {
+    installStudio: false,
+  },
 })
