@@ -6,7 +6,7 @@ export default withNuxt(
     files: ['**/*.ts', '**/*.js', '**/*.vue'],
     rules: {
       '@stylistic/max-statements-per-line': ['error', { max: 2 }],
-      '@stylistic/max-len': ['error', { code: 120 }],
+      '@stylistic/max-len': ['error', { code: 100 }],
     },
   },
 )
