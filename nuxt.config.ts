@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     },
   },
   auth: {
+    // globalAppMiddleware: true,
     provider: {
       type: 'authjs',
       trustHost: false,
