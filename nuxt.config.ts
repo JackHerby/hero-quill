@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@prisma/nuxt',
     '@sidebase/nuxt-auth',
   ],
+  css: ['~/assets/scss/main.scss'],
   eslint: {
     config: {
       stylistic: true,
