@@ -40,6 +40,18 @@ async function onSubmit(event: FormSubmitEvent<any>) {
         class="space-y-4"
         @submit="onSubmit"
       >
+        <UButton
+          color="gray"
+          icon="i-simple-icons-github"
+          size="lg"
+          :ui="{
+            base: 'w-full justify-center',
+            font: 'font-bold',
+          }"
+        >
+          GitHub
+        </UButton>
+        <UDivider label="OR" />
         <UFormGroup
           label="Email"
           name="email"
@@ -56,7 +68,6 @@ async function onSubmit(event: FormSubmitEvent<any>) {
             type="password"
           />
         </UFormGroup>
-
         <UButton type="submit">
           Submit
         </UButton>
