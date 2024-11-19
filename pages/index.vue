@@ -4,10 +4,12 @@ const { status, signIn, signOut } = useAuth()
 const isLoggedIn = status.value === 'authenticated'
 
 async function handleSignIn() {
+  console.log('handleSignIn', status.value)
   return await signIn('github')
 }
 
 async function handleSignOut() {
+  console.log('handleSignOut', status.value)
   return await signOut()
 }
 </script>
