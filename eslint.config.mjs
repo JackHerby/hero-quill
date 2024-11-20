@@ -7,6 +7,15 @@ export default withNuxt(
     rules: {
       '@stylistic/max-statements-per-line': ['error', { max: 2 }],
       '@stylistic/max-len': ['error', { code: 100 }],
+      'vue/singleline-html-element-content-newline': 'off',
+      'vue/max-attributes-per-line': ['error', {
+        singleline: {
+          max: 3,
+        },
+        multiline: {
+          max: 1,
+        },
+      }],
     },
   },
 )
