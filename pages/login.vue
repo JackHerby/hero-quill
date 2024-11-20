@@ -8,6 +8,8 @@ definePageMeta({
   },
 })
 
+const { signIn } = useAuth()
+
 const state = reactive({
   email: undefined,
   password: undefined,
@@ -19,11 +21,6 @@ const validate = (state: any): FormError[] => {
   if (!state.password) errors.push({ path: 'password', message: 'Required' })
   return errors
 }
-
-async function onSubmit(event: FormSubmitEvent<any>) {
-  // Do something with data
-  console.log(event.data)
-}
 </script>
 
 <template>
@@ -34,43 +31,39 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     }"
   >
     <UCard :ui="{ base: 'w-full' }">
+      <UButton
+        color="gray"
+        icon="i-simple-icons-github"
+        size="lg"
+        :ui="{
+          base: 'w-full justify-center',
+          font: 'font-bold',
+        }"
+        @click="() => signIn('github', { callbackUrl: '/' })"
+      >
+        GitHub
+      </UButton>
+      <UDivider label="OR" class="py-6" />
       <UForm
         :validate="validate"
         :state="state"
         class="space-y-4"
-        @submit="onSubmit"
+        @submit.prevent="
+          () =>
+            signIn('credentials', {
+              email: state.email,
+              password: state.password,
+              callbackUrl: '/',
+            })
+        "
       >
-        <UButton
-          color="gray"
-          icon="i-simple-icons-github"
-          size="lg"
-          :ui="{
-            base: 'w-full justify-center',
-            font: 'font-bold',
-          }"
-        >
-          GitHub
-        </UButton>
-        <UDivider label="OR" />
-        <UFormGroup
-          label="Email"
-          name="email"
-        >
+        <UFormGroup label="Email" name="email">
           <UInput v-model="state.email" />
         </UFormGroup>
-
-        <UFormGroup
-          label="Password"
-          name="password"
-        >
-          <UInput
-            v-model="state.password"
-            type="password"
-          />
+        <UFormGroup label="Password" name="password">
+          <UInput v-model="state.password" type="password" />
         </UFormGroup>
-        <UButton type="submit">
-          Submit
-        </UButton>
+        <UButton type="submit">Submit</UButton>
       </UForm>
     </UCard>
   </UContainer>

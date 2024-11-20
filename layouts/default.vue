@@ -1,24 +1,30 @@
 <script setup lang="ts">
-const links = [{
-  label: 'Home',
-  icon: 'i-heroicons-home',
-  to: '/',
-},
-{
-  label: 'Login',
-  icon: 'i-heroicons-arrow-right-end-on-rectangle',
-  to: '/login',
-},
-{
-  label: 'Public',
-  icon: 'i-heroicons-check',
-  to: '/public',
-},
-{
-  label: 'Protected',
-  icon: 'i-heroicons-x-circle',
-  to: '/protected',
-}]
+const links = [
+  {
+    label: 'Home',
+    icon: 'i-heroicons-home',
+    to: '/',
+    external: true,
+  },
+  {
+    label: 'Login',
+    icon: 'i-heroicons-arrow-right-end-on-rectangle',
+    to: '/login',
+    external: true,
+  },
+  {
+    label: 'Public',
+    icon: 'i-heroicons-check',
+    to: '/public',
+    external: true,
+  },
+  {
+    label: 'Protected',
+    icon: 'i-heroicons-x-circle',
+    to: '/protected',
+    external: true,
+  },
+]
 </script>
 
 <template>

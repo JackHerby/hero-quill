@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@sidebase/nuxt-auth',
   ],
   auth: {
-    // globalAppMiddleware: true,
+    globalAppMiddleware: true,
     provider: {
       type: 'authjs',
       trustHost: false,
