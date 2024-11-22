@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '#ui/types'
+import type { FormError } from '#ui/types'
 
 definePageMeta({
   auth: {
@@ -21,6 +21,17 @@ const validate = (state: any): FormError[] => {
   if (!state.password) errors.push({ path: 'password', message: 'Required' })
   return errors
 }
+
+const { data: providers } = await useFetch('/api/auth/providers')
+
+async function handleSignIn(provider: string, callbackUrl: string): Promise<void> {
+  console.log('handle sign in', provider)
+  try {
+    await signIn(provider, { callbackUrl })
+  } catch (e) {
+    console.error(e)
+  }
+}
 </script>
 
 <template>
@@ -31,31 +42,43 @@ const validate = (state: any): FormError[] => {
     }"
   >
     <UCard :ui="{ base: 'w-full' }">
-      <UButton
-        color="gray"
-        icon="i-simple-icons-github"
-        size="lg"
-        :ui="{
-          base: 'w-full justify-center',
-          font: 'font-bold',
-        }"
-        @click="() => signIn('github', { callbackUrl: '/' })"
-      >
-        GitHub
-      </UButton>
+      <div v-for="provider in providers" :key="provider.id">{{ provider.name }}</div>
+      <div class="flex justify-center gap-4">
+        <UButton
+          color="gray"
+          icon="i-simple-icons-github"
+          size="lg"
+          :ui="{
+            base: 'justify-center flex-1',
+            font: 'font-bold',
+          }"
+          @click="handleSignIn('github', '/')"
+        >
+          GitHub
+        </UButton>
+        <UButton
+          color="gray"
+          icon="i-simple-icons-twitch"
+          size="lg"
+          :ui="{
+            base: 'justify-center flex-1',
+            font: 'font-bold',
+          }"
+          @click="handleSignIn('twitch', '/')"
+        >
+          Twitch
+        </UButton>
+      </div>
       <UDivider label="OR" class="py-6" />
       <UForm
         :validate="validate"
         :state="state"
         class="space-y-4"
-        @submit.prevent="
-          () =>
-            signIn('credentials', {
-              email: state.email,
-              password: state.password,
-              callbackUrl: '/',
-            })
-        "
+        @submit.prevent="() => signIn('credentials', {
+          email: state.email,
+          password: state.password,
+          callbackUrl: '/',
+        })"
       >
         <UFormGroup label="Email" name="email">
           <UInput v-model="state.email" />
