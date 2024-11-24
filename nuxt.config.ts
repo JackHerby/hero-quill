@@ -8,12 +8,8 @@ export default defineNuxtConfig({
     '@prisma/nuxt',
     '@sidebase/nuxt-auth',
   ],
-  eslint: {
-    config: {
-      stylistic: true,
-    },
-  },
   auth: {
+    globalAppMiddleware: true,
     provider: {
       type: 'authjs',
       trustHost: false,
@@ -21,7 +17,23 @@ export default defineNuxtConfig({
       addDefaultCallbackUrl: true,
     },
   },
+  css: ['~/assets/scss/main.scss'],
+  eslint: {
+    config: {
+      stylistic: {
+        braceStyle: '1tbs',
+      },
+    },
+  },
   prisma: {
     installStudio: false,
+  },
+  runtimeConfig: {
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+    TWITCH_CLIENT_SECRET: process.env.TWITCH_CLIENT_SECRET,
+    public: {
+      GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+      TWITCH_CLIENT_ID: process.env.TWITCH_CLIENT_ID,
+    },
   },
 })
