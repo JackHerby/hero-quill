@@ -20,15 +20,14 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
   eslint: {
     config: {
-      stylistic: {
-        braceStyle: '1tbs',
-      },
+      standalone: false,
     },
   },
   prisma: {
     installStudio: false,
   },
   runtimeConfig: {
+    API_ROUTE_SECRET: process.env.API_ROUTE_SECRET,
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     TWITCH_CLIENT_SECRET: process.env.TWITCH_CLIENT_SECRET,
     public: {

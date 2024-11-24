@@ -1,21 +1,11 @@
 // @ts-check
+import antfu from '@antfu/eslint-config'
 import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
-  {
-    files: ['**/*.ts', '**/*.js', '**/*.vue'],
+  antfu({
     rules: {
-      '@stylistic/max-statements-per-line': ['error', { max: 2 }],
-      '@stylistic/max-len': ['error', { code: 100 }],
-      'vue/singleline-html-element-content-newline': 'off',
-      'vue/max-attributes-per-line': ['error', {
-        singleline: {
-          max: 3,
-        },
-        multiline: {
-          max: 1,
-        },
-      }],
+      'antfu/if-newline': 'off',
     },
-  },
+  }),
 )
