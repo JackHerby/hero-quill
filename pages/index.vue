@@ -16,8 +16,12 @@ const isLoggedIn = status.value === 'authenticated'
         background: 'bg-amber-300 dark:bg-amber-400',
       }"
     >
-      <h1 class="text-xl">{{ status }}</h1>
-      <UButton v-if="isLoggedIn" @click="() => signOut()">Sign Out</UButton>
+      <h1 class="text-xl">
+        {{ status }}
+      </h1>
+      <UButton v-if="isLoggedIn" @click="() => signOut()">
+        Sign Out
+      </UButton>
     </UCard>
   </UContainer>
 </template>

@@ -1,9 +1,9 @@
+import { NuxtAuthHandler } from '#auth'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import TwitchProvider from 'next-auth/providers/twitch'
-import CredentialsProvider from 'next-auth/providers/credentials'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import prisma from '~/lib/prisma'
-import { NuxtAuthHandler } from '#auth'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -32,7 +32,7 @@ export default NuxtAuthHandler({
   callbacks: {
     session: async ({ session }) => {
       const me = await getMe(session)
-      ;(session as any).is_subscribed = me.is_subscribed
+      ;(session as any).is_subscribed = me?.is_subscribed
       return Promise.resolve(session)
     },
   },
