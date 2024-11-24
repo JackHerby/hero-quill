@@ -6,6 +6,7 @@ export default withNuxt(
   antfu({
     rules: {
       'antfu/if-newline': 'off',
+      'node/prefer-global/process': 'off',
     },
   }),
 )

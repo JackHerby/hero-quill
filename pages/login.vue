@@ -15,20 +15,22 @@ const state = reactive({
   password: undefined,
 })
 
-const validate = (state: any): FormError[] => {
+function validate(state: any): FormError[] {
   const errors = []
-  if (!state.email) errors.push({ path: 'email', message: 'Required' })
-  if (!state.password) errors.push({ path: 'password', message: 'Required' })
+  if (!state.email)
+    errors.push({ path: 'email', message: 'Required' })
+  if (!state.password)
+    errors.push({ path: 'password', message: 'Required' })
   return errors
 }
 
 const { data: providers } = await useFetch('/api/auth/providers')
 
 async function handleSignIn(provider: string, callbackUrl: string): Promise<void> {
-  console.log('handle sign in', provider)
   try {
     await signIn(provider, { callbackUrl })
-  } catch (e) {
+  }
+  catch (e) {
     console.error(e)
   }
 }
@@ -42,7 +44,9 @@ async function handleSignIn(provider: string, callbackUrl: string): Promise<void
     }"
   >
     <UCard :ui="{ base: 'w-full' }">
-      <div v-for="provider in providers" :key="provider.id">{{ provider.name }}</div>
+      <div v-for="provider in providers" :key="provider.id">
+        {{ provider.name }}
+      </div>
       <div class="flex justify-center gap-4">
         <UButton
           color="gray"
@@ -86,7 +90,9 @@ async function handleSignIn(provider: string, callbackUrl: string): Promise<void
         <UFormGroup label="Password" name="password">
           <UInput v-model="state.password" type="password" />
         </UFormGroup>
-        <UButton type="submit">Submit</UButton>
+        <UButton type="submit">
+          Submit
+        </UButton>
       </UForm>
     </UCard>
   </UContainer>
