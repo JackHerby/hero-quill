@@ -10,6 +10,9 @@ const runtimeConfig = useRuntimeConfig()
 async function getMe(session: any) {
   return await $fetch('/api/me', {
     method: 'POST',
+    query: {
+      API_ROUTE_SECRET: runtimeConfig.API_ROUTE_SECRET,
+    },
     body: {
       record: {
         email: session?.user?.email,
@@ -29,7 +32,7 @@ export default NuxtAuthHandler({
   callbacks: {
     session: async ({ session }) => {
       const me = await getMe(session)
-      ;(session as any).subscribed = me.subscribed
+      ;(session as any).is_subscribed = me.is_subscribed
       return Promise.resolve(session)
     },
   },
