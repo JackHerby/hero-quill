@@ -38,20 +38,6 @@ export default NuxtAuthHandler({
   },
   providers: [
     // @ts-expect-error Use .default here for it to work during SSR.
-    CredentialsProvider.default({
-      name: 'Credentials',
-      authorize(credentials: any) {
-        // NOTE: not suitable for prod, used as test logic
-        const user = {
-          email: 'test@wp.pl',
-          password: 'password',
-        }
-        if (credentials.email === user.email && credentials.password === user.password) {
-          return user
-        }
-      },
-    }),
-    // @ts-expect-error Use .default here for it to work during SSR.
     GithubProvider.default({
       clientId: runtimeConfig.public.GITHUB_CLIENT_ID,
       clientSecret: runtimeConfig.GITHUB_CLIENT_SECRET,
