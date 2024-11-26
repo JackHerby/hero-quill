@@ -1,6 +1,5 @@
 import { NuxtAuthHandler } from '#auth'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import CredentialsProvider from 'next-auth/providers/credentials'
 import GithubProvider from 'next-auth/providers/github'
 import TwitchProvider from 'next-auth/providers/twitch'
 import prisma from '~/lib/prisma'
