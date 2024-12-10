@@ -18,8 +18,8 @@
     "@next-auth/prisma-adapter": "^1.0.7",
     "@nuxt/ui": "^2.18.7",
     "@prisma/nuxt": "^0.0.35",
-    "@sidebase/nuxt-auth": "^0.9.4",
-    "next-auth": "4.21.1",
+    "@sidebase/nuxt-auth": "^0.6.7",
+    "next-auth": "^4.24.11",
     "nuxt": "^3.13.0",
     "vue": "latest",
     "vue-router": "latest"
